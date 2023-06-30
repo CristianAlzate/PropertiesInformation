@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Infrastructure.Middleware;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -17,6 +18,7 @@ namespace Infrastructure.Extensions.ApplicationBuilder
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseMiddleware<ErrorHandlerMiddleware>();
             app.UseEndpoints(endpoints => {  endpoints.MapControllers(); });
         }
     }

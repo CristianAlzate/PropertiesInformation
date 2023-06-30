@@ -1,7 +1,6 @@
 using Infrastructure.Extensions.ApplicationBuilder;
 using Infrastructure.Extensions.ServiceCollection;
 using Infrastructure.Mappings;
-using Infrastructure.Persistence.Services.Base;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,9 +19,9 @@ builder.Services.AddDependency();
 // Metodo de autenticacion
 builder.Services.AddAuthenticationExtend(builder.Configuration.GetSection("JWT:Key").Value);
 
-
 var app = builder.Build();
 
+//Configuracion inicial
 DefaultCfg.InitConfigurationApi(app);
 
 app.Run();

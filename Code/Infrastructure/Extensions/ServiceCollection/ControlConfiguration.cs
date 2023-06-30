@@ -2,6 +2,7 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Infrastructure.Filters;
+using Infrastructure.Middleware;
 using Infrastructure.Validators;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +14,7 @@ namespace Infrastructure.Extensions.ServiceCollection
     {
         public static IServiceCollection AddControllersExtend(this IServiceCollection services)
         {
+            services.AddTransient<ErrorHandlerMiddleware>();
             services.AddControllers(options =>
             {
                 options.Filters.Add<GlobalValidationFilterAttribute>();

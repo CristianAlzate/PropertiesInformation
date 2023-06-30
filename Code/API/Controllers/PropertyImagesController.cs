@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    /// <summary>
+    /// Controlador para los servicios referentes a la entidad PropertyImage
+    /// </summary>
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
@@ -17,6 +20,11 @@ namespace API.Controllers
             _propertyImageService = propertyImageService;
         }
 
+        /// <summary>
+        /// Metodo para insertar imagenes de una propiedad
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Post([FromForm] CreatePropertyImageDTO obj)
         {

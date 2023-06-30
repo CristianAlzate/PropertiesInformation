@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+
+    /// <summary>
+    /// Controlador para la parte de seguridad de usuario
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase
@@ -12,6 +16,16 @@ namespace API.Controllers
         {
            _config = config;
         }
+
+
+        /// <summary>
+        /// Metodo de autenticacion
+        /// </summary>
+        /// <param name="objDTO">
+        ///     User = Usuario ingresado
+        ///     Password = Contraseña ingresada
+        /// </param>
+        /// <returns>Token = token de autorizacion</returns>
         [HttpPost]
         public async Task<IActionResult> Login([FromForm] LoginDTO objDTO)
         {

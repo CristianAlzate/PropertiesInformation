@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    /// <summary>
+    /// Controlador para los servicios referentes a la entidad PropertyTrace
+    /// </summary>
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
@@ -19,6 +22,11 @@ namespace API.Controllers
             _propertyTraceService = propertyTraceService;
         }
 
+        /// <summary>
+        /// Metodo para insertar informacion de una propiedad
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Post([FromForm] CreatePropertyTraceDTO obj)
         {

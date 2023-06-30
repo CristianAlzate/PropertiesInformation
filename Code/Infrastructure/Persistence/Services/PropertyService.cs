@@ -45,6 +45,16 @@ namespace Infrastructure.Persistence.Services
             var _properties = await _repository.GetPropertiesAsync(cancellationToken);
             return _mapper.Map<IEnumerable<PropertyDTO>>(_properties);
         }
+
+        /// <summary>
+        /// Metodo para filtrar propiedades
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="idOwner"></param>
+        /// <param name="price"></param>
+        /// <param name="address"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<PropertyDTO>> GetProperties(string? name, int? idOwner, decimal? price, string? address, CancellationToken cancellationToken = default)
         {
             Expression<Func<Property, bool>> filter = s => (!string.IsNullOrEmpty(name) ? s.Name.Contains(name) : s.Name == s.Name)
@@ -56,6 +66,12 @@ namespace Infrastructure.Persistence.Services
             return _mapper.Map<IEnumerable<PropertyDTO>>(_properties);
         }
 
+        /// <summary>
+        /// Metodo que inserta la propiedad y a su propietario en caso tal de que no exista
+        /// </summary>
+        /// <param name="objDTO"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public async Task<CreatePropertyDTO> InsertPropertyAsync(CreatePropertyDTO objDTO, CancellationToken cancellationToken = default) 
         {
             if (objDTO.Owner.IdOwner == 0)

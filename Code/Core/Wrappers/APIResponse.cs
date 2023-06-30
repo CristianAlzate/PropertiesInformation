@@ -27,7 +27,7 @@ namespace Core.Wrappers
 
         public bool Succeded { get; set; }
         public string Message { get; set; }
-        public List<string> Errors { get; set; }
+        public IReadOnlyDictionary<string, string[]> Errors { get; set; }
         public T Data { get; set; }
     }
 }
