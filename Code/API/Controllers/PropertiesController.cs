@@ -28,7 +28,7 @@ namespace API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult>Get()
         {
             var _properties = await _propertyService.GetProperties();
             var response = new APIResponse<IEnumerable<PropertyDTO>>(_properties);
